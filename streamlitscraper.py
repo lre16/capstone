@@ -240,18 +240,17 @@ with tab2:
     import streamlit as st
     from selenium import webdriver
     from selenium.webdriver.chrome.options import Options
-    from selenium import webdriver
+    from selenium.webdriver.chrome.service import Service
     from webdriver_manager.chrome import ChromeDriverManager
-    from fake_useragent import UserAgent
-    from bs4 import BeautifulSoup
-    import pandas as pd
-    import time
-    import base64
-    import numpy as np
-    from datetime import datetime
-    import datetime
-    import re
-    import requests
+    import streamlit as st
+
+    @st.experimental_singleton
+    def get_driver():
+        options = Options()
+        options.add_argument('--disable-gpu')
+        options.add_argument('--headless')
+        return webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
+
 
     def main():
         # Setup selenium webdriver
