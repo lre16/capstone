@@ -1,11 +1,17 @@
 import streamlit as st
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
 from bs4 import BeautifulSoup
-import pandas as pd
 import requests
 from fake_useragent import UserAgent
-import time
 import datetime
 import base64
+import re
+import numpy as np
+import pandas as pd
+import time
 
 
 tab1, tab2 = st.tabs(["Spinneys", "Carrefour"])
@@ -237,14 +243,7 @@ with tab1:
     main()
 
 with tab2:
-    import streamlit as st
-    from selenium import webdriver
-    from selenium.webdriver.chrome.options import Options
-    from selenium.webdriver.chrome.service import Service
-    from webdriver_manager.chrome import ChromeDriverManager
-    import streamlit as st
-
-    @st.experimental_singleton
+    
     def get_driver():
         options = Options()
         options.add_argument('--disable-gpu')
