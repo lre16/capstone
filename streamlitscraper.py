@@ -1,3 +1,5 @@
+from webdriver_manager.chrome import ChromeDriverManager
+driver = webdriver.Chrome(ChromeDriverManager().install())
 import streamlit as st
 from bs4 import BeautifulSoup
 import pandas as pd
