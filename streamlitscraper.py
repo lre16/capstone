@@ -245,10 +245,12 @@ with tab1:
 with tab2:
     
     def get_driver():
-        options = Options()
-        options.add_argument('--disable-gpu')
-        options.add_argument('--headless')
-        return webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
+        chrome_options = Options()
+        chrome_options.add_argument('--headless')
+        chrome_options.add_argument('--disable-gpu')
+        chrome_options.add_argument('--no-sandbox')
+        chrome_options.binary_location = "packages.txt"  # Replace with actual path
+        return webdriver.Chrome(executable_path="packages.txt", options=chrome_options)
 
 
     def main():
