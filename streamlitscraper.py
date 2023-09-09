@@ -6,6 +6,9 @@ from fake_useragent import UserAgent
 import time
 import datetime
 import base64
+def installff():
+  os.system('sbase install geckodriver')
+  os.system('ln -s /home/appuser/venv/lib/python3.7/site-packages/seleniumbase/drivers/geckodriver /home/appuser/venv/bin/geckodriver')
 
 
 tab1, tab2 = st.tabs(["Spinneys", "Carrefour"])
