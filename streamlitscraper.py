@@ -6,9 +6,6 @@ from fake_useragent import UserAgent
 import time
 import datetime
 import base64
-def installff():
-  os.system('sbase install geckodriver')
-  os.system('ln -s /home/appuser/venv/lib/python3.7/site-packages/seleniumbase/drivers/geckodriver /home/appuser/venv/bin/geckodriver')
 
 
 tab1, tab2 = st.tabs(["Spinneys", "Carrefour"])
@@ -255,19 +252,14 @@ with tab2:
     import datetime
     import re
     import requests
-    from selenium import webdriver
-    from selenium.webdriver.chrome.options import Options
-    from selenium.webdriver.chrome.service import Service
-    from webdriver_manager.chrome import ChromeDriverManager
-
-
 
     def main():
+        # Setup selenium webdriver
         ua = UserAgent()
         user_agent = ua.random
         options = Options()
         options.add_argument(f'user-agent={user_agent}')
-        driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
+        driver = webdriver.Chrome(options=options)
 
     def extract_weight(row):
                 # If weight is already defined, return it
