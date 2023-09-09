@@ -245,7 +245,6 @@ with tab1:
 with tab2:
     
    def get_driver():
-        # Chrome options
         chrome_options = webdriver.ChromeOptions()
         chrome_options.add_argument('--headless')  # Run Chrome in headless mode
         chrome_options.add_argument('--no-sandbox')  # Bypass OS security model
@@ -254,10 +253,7 @@ with tab2:
 
         return webdriver.Chrome(options=chrome_options)
 
-
-
     def main():
-        # Setup selenium webdriver
         ua = UserAgent()
         user_agent = ua.random
         options = Options()
