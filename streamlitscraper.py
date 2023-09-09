@@ -1,23 +1,11 @@
 import streamlit as st
 from bs4 import BeautifulSoup
-from selenium import webdriver
-from webdriver_manager.chrome import ChromeDriverManager
-from fake_useragent import UserAgent
 import pandas as pd
+import requests
+from fake_useragent import UserAgent
 import time
 import datetime
 import base64
-
-# Setup selenium webdriver
-ua = UserAgent()
-options = webdriver.ChromeOptions()
-options.add_argument('--headless')
-options.add_argument('--no-sandbox')
-options.add_argument('--disable-dev-shm-usage')
-options.add_argument(f"user-agent={ua.random}")
-
-# Initialize WebDriver
-driver = webdriver.Chrome(ChromeDriverManager().install(), chrome_options=options)
 
 
 tab1, tab2 = st.tabs(["Spinneys", "Carrefour"])
@@ -249,14 +237,34 @@ with tab1:
     main()
 
 with tab2:
-  
+    import streamlit as st
+    from selenium import webdriver
+    from selenium.webdriver.chrome.options import Options
+    from selenium import webdriver
+    from webdriver_manager.chrome import ChromeDriverManager
+    from fake_useragent import UserAgent
+    from bs4 import BeautifulSoup
+    import pandas as pd
+    import time
+    import base64
+    import numpy as np
+    from datetime import datetime
+    import datetime
+    import re
+    import requests
+    from selenium import webdriver
+    from selenium.webdriver.chrome.options import Options
+    from selenium.webdriver.chrome.service import Service
+    from webdriver_manager.chrome import ChromeDriverManager
+
+
+
     def main():
-        # Setup selenium webdriver
         ua = UserAgent()
         user_agent = ua.random
         options = Options()
         options.add_argument(f'user-agent={user_agent}')
-        driver = webdriver.Chrome(options=options)
+        driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
 
     def extract_weight(row):
                 # If weight is already defined, return it
@@ -521,16 +529,5 @@ with tab2:
     if __name__ == "__main__":
         main()
 
-    import streamlit as st
-    import subprocess
 
-    def installed_packages():
-        try:
-            output = subprocess.check_output("pip freeze", shell=True).decode("utf-8")
-            st.text_area("Installed Packages", output)
-        except Exception as e:
-            st.write("An error occurred:", e)
-
-    # Call the function to list the installed packages
-    installed_packages()
 
