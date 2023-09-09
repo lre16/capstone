@@ -244,13 +244,16 @@ with tab1:
 
 with tab2:
     
-    def get_driver():
-        chrome_options = Options()
-        chrome_options.add_argument('--headless')
-        chrome_options.add_argument('--disable-gpu')
-        chrome_options.add_argument('--no-sandbox')
-        chrome_options.binary_location = "packages.txt"  # Replace with actual path
-        return webdriver.Chrome(executable_path="packages.txt", options=chrome_options)
+   def get_driver():
+        # Chrome options
+        chrome_options = webdriver.ChromeOptions()
+        chrome_options.add_argument('--headless')  # Run Chrome in headless mode
+        chrome_options.add_argument('--no-sandbox')  # Bypass OS security model
+        chrome_options.add_argument('--disable-dev-shm-usage')  # Overcome limited resource problems
+        chrome_options.add_argument('--disable-gpu')  
+
+        return webdriver.Chrome(options=chrome_options)
+
 
 
     def main():
